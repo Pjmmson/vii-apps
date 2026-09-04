@@ -1,9 +1,18 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import "./App.css"
 
 function App() {
   const [count, setCount] = useState(0)
-
+  const [message, setMessage] = useState('')
+  // useEffect(() => {
+  //   fetch('http://127.0.0.1')
+  //   .then(response => response.json())
+  //   .then(data => setMessage(data.message))
+  //   .catch(error => {
+  //     console.error("Connection failed: ",error);
+  //     setMessage("Connection failed. Check your console logs.")
+  //   })
+  // },[]);
   return (
     <>
       <section id="center">
@@ -20,6 +29,7 @@ function App() {
         >
           Count is {count}
         </button>
+        <p>{message}</p>
       </section>
       <section id="spacer"></section>
     </>
