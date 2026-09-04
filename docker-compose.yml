@@ -1,0 +1,51 @@
+# version: '3.8'
+
+services:
+  # 1. React Frontend
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    restart: always
+    depends_on:
+      - backend
+
+  # 2. Laravel PHP-FPM Application Engine
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    volumes:
+      - ./backend:/var/www
+    restart: always
+    depends_on:
+      - mysql
+
+  # 3. Nginx Server for Laravel backend
+  backend-nginx:
+    image: nginx:alpine
+    ports:
+      - "8000:80"
+    volumes:
+      - ./backend:/var/www
+      - ./nginx:/etc/nginx/conf.d
+    restart: always
+    depends_on:
+      - backend
+
+  # 4. MySQL Database (Completely internal network)
+  mysql:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: laravel_db
+      MYSQL_USER: laravel_user
+      MYSQL_PASSWORD: secure_password
+      MYSQL_ROOT_PASSWORD: root_secure_password
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
