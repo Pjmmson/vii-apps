@@ -1,18 +1,22 @@
-import { useEffect, useState } from "react"
-import "./App.css"
+import { useEffect, useState } from 'react';
+import api from './api/axios';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
-  const [message, setMessage] = useState('')
-  // useEffect(() => {
-  //   fetch('http://127.0.0.1')
-  //   .then(response => response.json())
-  //   .then(data => setMessage(data.message))
-  //   .catch(error => {
-  //     console.error("Connection failed: ",error);
-  //     setMessage("Connection failed. Check your console logs.")
-  //   })
-  // },[]);
+  const [count, setCount] = useState(0);
+  const [message, setMessage] = useState('');
+
+  useEffect(() => {
+    api.get('/test-connection')
+      .then((response) => {
+        // Axios automatically parses JSON into response.data
+        setMessage(response.data.message);
+      })
+      .catch(() => {
+        setMessage('Connection failed. Check your console logs.');
+      });
+  }, []);
+
   return (
     <>
       <section id="center">
@@ -29,11 +33,15 @@ function App() {
         >
           Count is {count}
         </button>
-        <p>{message}</p>
+        <div>
+          <p style={{ color: message.includes('!!!') ? 'green' : 'orange', fontWeight: 'bold' }}>
+            {message}
+          </p>
+        </div>
       </section>
       <section id="spacer"></section>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
