@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import api from "./api/axios";
+import api from "../services/api/axios";
 
 function App() {
   const [message, setMessage] = useState("Testing connection...");
