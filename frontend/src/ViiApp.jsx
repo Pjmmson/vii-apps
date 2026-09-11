@@ -21,8 +21,9 @@ function ViiApp() {
   }, [url]);
 
   return (
-  <div className="flex bg-slate-900">
+  <div className="flex flex-col items-center bg-slate-900">
     <h1>{"======== Vii main page ========="}</h1>
+    <h1>{"=========================="}</h1>
     <h2>{message}</h2>
   </div>
   )
