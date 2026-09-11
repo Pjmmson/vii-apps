@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import api from "../services/api/baseAPI";
 import enpoints from "../services/api/enpoints";
+import viiLogo from './assets/viilogo.jpeg';
 
 function ViiApp() {
   const [message, setMessage] = useState("Testing API connection ...");
@@ -21,14 +22,12 @@ function ViiApp() {
   }, [url]);
 
   return (
-  <div className="flex flex-col items-center bg-white min-h-screen w-full">
-    <h1>{"======== Vii main page ========="}</h1>
-    <h1>{"=========================="}</h1>
-    <h2>{message}</h2>
-  </div>
-)
-
-  
-}
-
+    <div className="flex flex-col items-center min-h-screen w-full">
+      <h1>{"======== Vii main page ========"}</h1>
+      <img src={viiLogo} alt="vii-logo" className="w-48 h-auto"/>
+      <h1>{"==================="}</h1>
+      <h2>{message}</h2>
+    </div>
+  );
+};
 export default ViiApp;
