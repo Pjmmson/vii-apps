@@ -1,14 +1,19 @@
 import { useEffect, useState } from "react";
 import api from "../services/api/baseAPI";
 import enpoints from "../services/api/enpoints";
-import viiLogo from './assets/viilogo.jpeg';
+import MainPageLayout from "../layouts/MainPageLayout";
+import { HEADER_MENUS } from "../config/mainpage/headerMenu";
+import { FOOTER_MENUS } from "../config/mainpage/footerMenu";
+import LOADING from "../components/loading";
 
 function ViiApp() {
   const [message, setMessage] = useState("Testing API connection ...");
+  const [ isLoading, setIsLoading ] = useState(false);
   const url = import.meta.env.VITE_API_URL+enpoints.testConnection.base;
   useEffect(() => {
     console.log("URL: ",url);
     const testConnection = async (url) => {
+      setIsLoading(true);
       try {
         const response = await api.get(url); 
         console.log("Response:", response.data);
@@ -16,18 +21,23 @@ function ViiApp() {
       } catch (error) {
         console.error("Connection failed:", error);
         setMessage("Connection failed.");
+      } finally {
+        setIsLoading(false);
       }
     };
-    testConnection(url);
+    if (url) {
+      testConnection(url);
+    }
   }, [url]);
 
   return (
-    <div className="flex flex-col items-center min-h-screen w-full">
-      <h1>{"======== Vii main page ========"}</h1>
-      <img src={viiLogo} alt="vii-logo" className="w-48 h-auto"/>
-      <h1>{"==================="}</h1>
-      <h2>{message}</h2>
-    </div>
+    <>
+    {!isLoading ? (
+      <MainPageLayout headerMenu={HEADER_MENUS} footers={FOOTER_MENUS}/>
+    ) : (
+      <LOADING label={"Loading ..."}/>
+    )}
+    </>
   );
 };
 export default ViiApp;
