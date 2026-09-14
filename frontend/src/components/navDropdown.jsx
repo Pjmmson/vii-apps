@@ -1,11 +1,5 @@
 import { useState, useRef, useEffect } from "react";
 
-const Container = ({ children, className = ""}) => (
-    <div className={`w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 ${className}`}>
-        {children}
-    </div>
-);
-
 const NavDropDown = ({ item }) => {
     const [ isOpen, setIsOpen ] = useState(false);
     const dropdownRef = useRef(null);
