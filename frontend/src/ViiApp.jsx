@@ -4,7 +4,7 @@ import ViiPages from "./modules/ViiPages";
 function ViiApp() {
   return (
     <Routes>
-      <Route path="/" element={<ViiPages />} />
+      <Route path="/*" element={<ViiPages />} />
     </Routes>
   );
 };

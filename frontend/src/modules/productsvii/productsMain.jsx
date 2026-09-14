@@ -1,10 +1,10 @@
 import { Routes, Route } from "react-router-dom";
-import ModelViis from "./modelVii/modelViis";
+import AgricultureMain from "./agriculture/agricultureMain";
 
 const ProductMain = () => {
     return (
         <Routes>
-            <Route path="/model-viis/*" element={<ModelViis />} />
+            <Route path="/agriculture" element={<AgricultureMain />} />
         </Routes>
     );
 };

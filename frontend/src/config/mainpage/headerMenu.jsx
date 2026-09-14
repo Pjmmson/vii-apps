@@ -7,7 +7,7 @@ export const HEADER_MENUS = [
     submenu: [
       {
         name: "agri-assistant",
-        link: "/agr"
+        link: "/agriculture"
       },
       {
         name: "healthcare-assistant",

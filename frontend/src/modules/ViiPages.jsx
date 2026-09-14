@@ -34,7 +34,7 @@ const ViiPages = () => {
   return (
     <div>
       {!isLoading ? (
-        <BaseLayout headerMenu={HEADER_MENUS} footers={FOOTER_MENUS} viilogo={viilogo} children={[""]}/>
+        <BaseLayout headerMenu={HEADER_MENUS} footers={FOOTER_MENUS} viilogo={viilogo} children={["-----"]}/>
       ) : (
         <LOADING label={"Loading ..."}/>
       )}
