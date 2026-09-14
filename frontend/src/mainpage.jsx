@@ -1,10 +1,12 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import ViiApp from './ViiApp.jsx'
+import { createRoot } from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import "./index.css";
+import ViiApp from "./ViiApp";
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
+const root = document.getElementById("root");
+
+createRoot(root).render(
+  <BrowserRouter>
     <ViiApp />
-  </StrictMode>,
-)
+  </BrowserRouter>
+);

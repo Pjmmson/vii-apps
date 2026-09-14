@@ -1,6 +1,6 @@
-const enpoints = {
+const endpoints = {
     testConnection: {
         base: "/api/test-connection/"
     }
 };
-export default enpoints;
+export default endpoints;
