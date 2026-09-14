@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import BaseLayout from "../layouts/BaseLayout";
-import { HEADER_MENUS } from "../config/mainpage/headerMenu";
-import { FOOTER_MENUS } from "../config/mainpage/footerMenu";
+import { HEADER_MENUS } from "../config/constants/headerMenu";
+import { FOOTER_MENUS } from "../config/constants/footerMenu";
 import viilogo from "../assets/viilogo.jpeg";
 import LOADING from "../components/loading";
 import endpoints from "../config/services/api/endpoints";
@@ -34,7 +34,7 @@ const ViiPages = () => {
   return (
     <div>
       {!isLoading ? (
-        <BaseLayout headerMenu={HEADER_MENUS} footers={FOOTER_MENUS} viilogo={viilogo} children={["-----"]}/>
+        <BaseLayout headerMenu={HEADER_MENUS} footers={FOOTER_MENUS} viilogo={viilogo} children={["Vii Main Page"]}/>
       ) : (
         <LOADING label={"Loading ..."}/>
       )}

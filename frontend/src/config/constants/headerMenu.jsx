@@ -6,7 +6,7 @@ export const HEADER_MENUS = [
     link: "#",
     submenu: [
       {
-        name: "agri-assistant",
+        name: "agriculture-assistant",
         link: "/agriculture"
       },
       {
@@ -15,7 +15,7 @@ export const HEADER_MENUS = [
       },
       {
         name: "environment-assistant",
-        link: "/env"
+        link: "/environment"
       }
     ]
   },
@@ -25,11 +25,11 @@ export const HEADER_MENUS = [
     submenu: [
       {
         name: "vii-solutions",
-        link: "/"
+        link: "/vii-solutions"
       },
       {
         name: "vii-yours",
-        link: "/"
+        link: "/vii-yours"
       }
     ]
   },
@@ -39,11 +39,11 @@ export const HEADER_MENUS = [
     submenu: [
       {
         name: "classifiers",
-        link: "/class"
+        link: "/vii-classifier"
       },
       {
         name: "regressors",
-        link: "/reg"
+        link: "/vii-regressor"
       }
     ]
   },
@@ -53,11 +53,11 @@ export const HEADER_MENUS = [
     submenu: [
       {
         name: "get-help",
-        link: "/help"
+        link: "/get-help"
       },
       {
         name: "explore-support",
-        link: "/ex-support"
+        link: "/explore-support"
       }
     ]
   },
