@@ -28,7 +28,7 @@ export default function BaseLayout({ headerMenu = [], footers = [], viilogo, chi
                         href={item.link || "#"} 
                         className="text-sm font-semibold text-gray-600 hover:text-black cursor-pointer transition-colors py-2"
                     >
-                        {item.name}
+                        <span className="flex flex-row items-center gap-1">{item.name}{item.icon && item.icon}</span>
                         {item.dropdowns && ("")}
                     </a>
                 );
