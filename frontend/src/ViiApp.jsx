@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import api from "../services/api/baseAPI";
 import enpoints from "../services/api/enpoints";
-import MainPageLayout from "../layouts/MainPageLayout";
+import BaseLayout from "../layouts/BaseLayout";
 import { HEADER_MENUS } from "../config/mainpage/headerMenu";
 import { FOOTER_MENUS } from "../config/mainpage/footerMenu";
 import LOADING from "../components/loading";
+import viilogo from "../src/assets/viilogo.jpeg";
 
 function ViiApp() {
   const [message, setMessage] = useState("Testing API connection ...");
@@ -32,11 +33,11 @@ function ViiApp() {
 
   return (
     <>
-    {!isLoading ? (
-      <MainPageLayout headerMenu={HEADER_MENUS} footers={FOOTER_MENUS}/>
-    ) : (
-      <LOADING label={"Loading ..."}/>
-    )}
+      {!isLoading ? (
+        <BaseLayout headerMenu={HEADER_MENUS} footers={FOOTER_MENUS} viilogo={viilogo} children={[]}/>
+      ) : (
+        <LOADING label={"Loading ..."}/>
+      )}
     </>
   );
 };
