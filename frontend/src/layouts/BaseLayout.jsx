@@ -12,7 +12,7 @@ export default function BaseLayout({ headerMenu = [], footers = [], viilogo, chi
         <div className="flex flex-col min-h-screen w-full bg-gray-50 text-gray-800 antialiased">
         {/* --- HEADER --- */}
         <header className="w-full bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm backdrop-blur-md">
-            <Container className="h-16 flex items-center justify-center gap-4">
+            <Container className="h-12 flex items-center justify-center gap-4">
             {/* Logo Section */}
             <div className="flex items-center gap-3 shrink-0">
                 <Link to={"/"}>
@@ -29,9 +29,9 @@ export default function BaseLayout({ headerMenu = [], footers = [], viilogo, chi
                         <a 
                             key={item.id || index} 
                             href={item.link || "#"} 
-                            className="text-sm font-semibold text-gray-600 hover:text-black cursor-pointer transition-colors py-2"
+                            className="font-semibold text-gray-600 hover:text-black cursor-pointer transition-colors py-2"
                         >
-                            <span className="flex flex-row items-center gap-1">{item.name}{item.icon && item.icon}</span>
+                            <span className="flex flex-row text-xs items-center gap-1">{item.name}{item.icon && item.icon}</span>
                             {item.dropdowns && ("")}
                         </a>
                     );
@@ -50,14 +50,13 @@ export default function BaseLayout({ headerMenu = [], footers = [], viilogo, chi
         {/* --- FOOTER --- */}
         <footer className="w-full bg-gray-900 text-gray-400 py-8 md:py-12 border-t border-gray-800 mt-auto">
             <Container className="flex flex-col md:flex-row md:justify-between md:items-center gap-6">
-            
             {/* Footer Navigation Links */}
             <div className="flex flex-wrap gap-x-6 gap-y-2">
                 {footers.map((item, index) => (
                 <a 
                     key={item.id || index} 
                     href={item.href || "#"} 
-                    className="text-sm font-semibold hover:text-white transition-colors"
+                    className="text-xs font-semibold hover:text-white transition-colors"
                 >
                     {item.name}
                 </a>

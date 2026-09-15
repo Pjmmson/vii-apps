@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-const NavDropDown = ({ item }) => {
+export default function NavDropDown ({ item }) {
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef(null);
 
@@ -29,7 +29,7 @@ const NavDropDown = ({ item }) => {
             <button
                 type="button"
                 onClick={() => setIsOpen((prev) => !prev)}
-                className="flex items-center gap-1 py-2 text-sm font-medium text-gray-600 transition-colors hover:text-black focus:outline-none"
+                className="flex items-center gap-1 py-2 text-xs font-extralight text-gray-600 transition-colors hover:text-black focus:outline-none"
                 aria-expanded={isOpen}
                 aria-haspopup="menu"
             >
@@ -62,7 +62,7 @@ const NavDropDown = ({ item }) => {
                         <a
                             key={subItem?.name || index}
                             href={subItem?.link || "#"}
-                            className="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-50 hover:text-black"
+                            className="block px-4 py-2 text-xs text-gray-700 transition-colors hover:bg-gray-50 hover:text-black"
                             onClick={() => setIsOpen(false)}
                             role="menuitem"
                         >
@@ -75,4 +75,4 @@ const NavDropDown = ({ item }) => {
     );
 };
 
-export default NavDropDown;
+// export default NavDropDown;

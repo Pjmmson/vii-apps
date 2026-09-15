@@ -7,7 +7,7 @@ import LOADING from "../components/loading";
 import endpoints from "../config/services/api/endpoints";
 import api from "../config/services/api/baseAPI";
 
-const ViiPages = () => {
+export default function ViiPages () {
   const [message, setMessage] = useState("Testing API connection ...");
   const [ isLoading, setIsLoading ] = useState(false);
   const url = import.meta.env.VITE_API_URL+endpoints.testConnection.base;
@@ -41,4 +41,3 @@ const ViiPages = () => {
     </div>
   );
 };
-export default ViiPages;
