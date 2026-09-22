@@ -16,6 +16,13 @@ const ViiYoursMain = lazy(() => import("./modules/viiservices/vii-yours/viiYours
 // Support
 const GetHelpMain = lazy(() => import("./modules/viisupport/gethelp/getHelpMain"));
 const ExploreSupportMain = lazy(() => import("./modules/viisupport/exploresupport/exploreSupport"));
+// footers
+const ForLearnMain = lazy(() => import("./modules/forlearn/forLearnMain"));
+const ForBusinessMain = lazy(() => import("./modules/forbusiness/forBusinessMain"));
+const ForEducationMain = lazy(() => import("./modules/foreducation/forEducationMain"));
+const ForGovernmentMain = lazy(() => import("./modules/forgovernment/forGovermentMain"));
+const AccountMain = lazy(() => import("./modules/account/accountMain"));
+const AboutViiMain = lazy(() => import("./modules/aboutvii/aboutViiMain"));
 
 function ViiApp() {
   return (
@@ -31,6 +38,12 @@ function ViiApp() {
         <Route path="/vii-yours" element={<ViiYoursMain />} />
         <Route path="/get-help" element={<GetHelpMain />}/>
         <Route path="/explore-support" element={<ExploreSupportMain />} />
+        <Route path="/for-learn" element={<ForLearnMain />}/>
+        <Route path="/for-business" element={<ForBusinessMain />}/>
+        <Route path="/for-education" element={<ForEducationMain />}/>
+        <Route path="/for-government" element={<ForGovernmentMain />}/>
+        <Route path="/account" element={<AccountMain />}/>
+        <Route path="/about-vii" element={<AboutViiMain />}/>
       </Routes>
     </Suspense>
   );

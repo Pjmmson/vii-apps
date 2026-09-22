@@ -55,7 +55,7 @@ export default function BaseLayout({ headerMenu = [], footers = [], viilogo, chi
                 {footers.map((item, index) => (
                 <a 
                     key={item.id || index} 
-                    href={item.href || "#"} 
+                    href={item.link || "#"} 
                     className="text-xs font-semibold hover:text-white transition-colors"
                 >
                     {item.name}
