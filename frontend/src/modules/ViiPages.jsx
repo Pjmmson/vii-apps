@@ -4,8 +4,8 @@ import { HEADER_MENUS } from "../config/constants/headerMenu";
 import { FOOTER_MENUS } from "../config/constants/footerMenu";
 import viilogo from "../assets/viilogo.jpeg";
 import LOADING from "../components/loading";
-import ENDPOINTS from "../config/services/api/endpoints";
-import API from "../config/services/api/baseAPI";
+import ENDPOINTS from "../api/endpoints";
+import API from "../api/baseAPI";
 
 export default function ViiPages () {
   const [message, setMessage] = useState("Testing API connection ...");

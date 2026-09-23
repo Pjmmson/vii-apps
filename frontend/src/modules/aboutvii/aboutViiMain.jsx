@@ -4,9 +4,7 @@ import { FOOTER_MENUS } from "../../config/constants/footerMenu";
 import viilogo from "../../assets/viilogo.jpeg";
 const AboutViiMain = () => {
     return (
-        <div>
-            <BaseLayout headerMenu={HEADER_MENUS} footers={FOOTER_MENUS} viilogo={viilogo} children={["About Vii Page"]}/>
-        </div>
+        <BaseLayout headerMenu={HEADER_MENUS} footers={FOOTER_MENUS} viilogo={viilogo} children={["About Vii Page"]}/>
     );
 };
 export default AboutViiMain;

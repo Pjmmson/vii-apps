@@ -4,9 +4,7 @@ import { FOOTER_MENUS } from "../../../config/constants/footerMenu";
 import viilogo from "../../../assets/viilogo.jpeg";
 const EnvironmentMain = () => {
     return (
-        <div>
-            <BaseLayout headerMenu={HEADER_MENUS} footers={FOOTER_MENUS} viilogo={viilogo} children={["Environment Page"]}/>
-        </div>
+        <BaseLayout headerMenu={HEADER_MENUS} footers={FOOTER_MENUS} viilogo={viilogo} children={["Environment Page"]}/>
     );
 };
 export default EnvironmentMain;

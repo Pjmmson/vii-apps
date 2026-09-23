@@ -1,5 +1,5 @@
-import ENDPOINTS from "./endpoints";
-import API from "./baseAPI";
+import ENDPOINTS from "../api/endpoints";
+import API from "../api/baseAPI";
 
 export const getViiAccounts = async () => {
   console.log("Fetching from:", ENDPOINTS.viiAccounts.base);

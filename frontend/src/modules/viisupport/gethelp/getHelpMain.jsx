@@ -5,8 +5,6 @@ import viilogo from "../../../assets/viilogo.jpeg";
 
 export default function GetHelpMain () {
     return (
-        <div>
-            <BaseLayout headerMenu={HEADER_MENUS} footers={FOOTER_MENUS} viilogo={viilogo} children={["Get Help Page"]}/>
-        </div>
+        <BaseLayout headerMenu={HEADER_MENUS} footers={FOOTER_MENUS} viilogo={viilogo} children={["Get Help Page"]}/>
     );
 };

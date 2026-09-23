@@ -4,9 +4,7 @@ import { FOOTER_MENUS } from "../../../config/constants/footerMenu";
 import viilogo from "../../../assets/viilogo.jpeg";
 const ViiRegressorMain = () => {
     return (
-        <div>
-            <BaseLayout headerMenu={HEADER_MENUS} footers={FOOTER_MENUS} viilogo={viilogo} children={["Vii regressor models"]}/>
-        </div>
+        <BaseLayout headerMenu={HEADER_MENUS} footers={FOOTER_MENUS} viilogo={viilogo} children={["Vii regressor models"]}/>
     );
 };
 export default ViiRegressorMain;
