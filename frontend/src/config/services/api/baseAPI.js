@@ -1,24 +1,28 @@
 import axios from "axios";
 
-const api = axios.create({
-    // baseURL: import.meta.env.VITE_API_URL,
-    baseURL: "http://127.0.0",
-    headers: {
-      "Content-Type": "application/json",
-      "Accept": "application/json",
-    },
-    withCredentials: true,
-    withXSRFToken: true,
-    timeout: 10000,
-  });
+const API = axios.create({
+  baseURL: "http://127.0.0.1:8000/api",
+  headers: {
+    "Content-Type": "application/json",
+    Accept: "application/json",
+  },
+  timeout: 10000,
+});
 
-api.interceptors.response.use(
-  (response) => response ?? "",
+API.interceptors.response.use(
+  (response) => response,
   (error) => {
-    console.error("API Error:", error);
-    console.error("Failed Request Config:", error.config);
+    if (error.response) {
+      // Backend responded with an error status code (404, 500, 403)
+      console.error(`Backend Error [${error.response.status}]:`, error.response.data);
+    } else if (error.request) {
+      // Server did not respond (Server down, wrong host/port, or CORS block)
+      console.error("Network Error / Server Unreachable / CORS Blocked:", error.message);
+    } else {
+      console.error("Request Configuration Error:", error.message);
+    }
     return Promise.reject(error);
   }
 );
-export default api;
 
+export default API;

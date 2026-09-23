@@ -5,7 +5,8 @@ return [
     'allowed_methods' => ['*'],
     'allowed_origins' => ['http://localhost:5566'], // Add your frontend origin here
     'allowed_origins_patterns' => [],
-    'allowed_headers' => ['Content-Type', 'X-Requested-With', 'Authorization', 'Accept', 'X-XSRF-TOKEN'],
+    // 'allowed_headers' => ['Content-Type', 'X-Requested-With', 'Authorization', 'Accept', 'X-XSRF-TOKEN'],
+    'allowed_headers' => ['*'],
     'exposed_headers' => [],
     'max_age' => 0,
     'supports_credentials' => true, // Set to true if you are using cookies/sessions (like Sanctum)

@@ -1,5 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ViiAccountController;
 
 Route::get('/test-connection', function () {
     try {
@@ -8,9 +9,12 @@ Route::get('/test-connection', function () {
             'message' => 'Laravel backend is connected !!!' 
             ],200);
     } catch (e) {
-        return response->json([
+        return response()->json([
             'error' => 'Database internal error: '. e->getMessage()
         ],500);
     }
     
 });
+
+// Vii-accounts
+Route::apiResource('/vii_accounts',ViiAccountController::class);

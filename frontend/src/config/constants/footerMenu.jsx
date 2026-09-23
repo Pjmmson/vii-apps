@@ -1,22 +1,22 @@
 export const FOOTER_MENUS = [
     {
-      name: "for-learn",
+      name: "vii-for-learn",
       link: "/for-learn"
     },
     {
-      name: "for-business",
+      name: "vii-for-business",
       link: "/for-business"
     },
     {
-      name: "for-education",
+      name: "vii-for-education",
       link: "/for-education"
     },
     {
-      name: "for-government",
+      name: "vii-for-government",
       link: "/for-government"
     },
     {
-      name: "account",
+      name: "vii-account",
       link: "/account"
     },
     {

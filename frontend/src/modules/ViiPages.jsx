@@ -4,19 +4,19 @@ import { HEADER_MENUS } from "../config/constants/headerMenu";
 import { FOOTER_MENUS } from "../config/constants/footerMenu";
 import viilogo from "../assets/viilogo.jpeg";
 import LOADING from "../components/loading";
-import endpoints from "../config/services/api/endpoints";
-import api from "../config/services/api/baseAPI";
+import ENDPOINTS from "../config/services/api/endpoints";
+import API from "../config/services/api/baseAPI";
 
 export default function ViiPages () {
   const [message, setMessage] = useState("Testing API connection ...");
   const [ isLoading, setIsLoading ] = useState(false);
-  const url = import.meta.env.VITE_API_URL+endpoints.testConnection.base;
+  const url = import.meta.env.VITE_API_URL+ENDPOINTS.testConnection.base;
   useEffect(() => {
-    console.log("URL: ",url);
+    console.log("URL ",url);
     const testConnection = async (url) => {
       setIsLoading(true);
       try {
-        const response = await api.get(url); 
+        const response = await API.get(url); 
         console.log("Response:", response.data);
         setMessage(response.data.message);
       } catch (error) {
