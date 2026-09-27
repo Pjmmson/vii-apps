@@ -17,7 +17,7 @@ export const FOOTER_MENUS = [
     },
     {
       name: "vii-account",
-      link: "/account"
+      link: "/account/main"
     },
     {
       name: "about-vii",

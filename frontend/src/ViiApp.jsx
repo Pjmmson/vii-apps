@@ -21,7 +21,7 @@ const ForLearnMain = lazy(() => import("./modules/forlearn/forLearnMain"));
 const ForBusinessMain = lazy(() => import("./modules/forbusiness/forBusinessMain"));
 const ForEducationMain = lazy(() => import("./modules/foreducation/forEducationMain"));
 const ForGovernmentMain = lazy(() => import("./modules/forgovernment/forGovermentMain"));
-const AccountMain = lazy(() => import("./modules/account/accountMain"));
+const AccountGate = lazy(() => import("./modules/account/accountGate"));
 const AboutViiMain = lazy(() => import("./modules/aboutvii/aboutViiMain"));
 
 function ViiApp() {
@@ -42,7 +42,7 @@ function ViiApp() {
         <Route path="/for-business" element={<ForBusinessMain />}/>
         <Route path="/for-education" element={<ForEducationMain />}/>
         <Route path="/for-government" element={<ForGovernmentMain />}/>
-        <Route path="/account" element={<AccountMain />}/>
+        <Route path="/account/*" element={<AccountGate />}/>
         <Route path="/about-vii" element={<AboutViiMain />}/>
       </Routes>
     </Suspense>

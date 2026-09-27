@@ -42,9 +42,9 @@ export default function BaseLayout({ headerMenu = [], footers = [], viilogo, chi
             </header>
         
             {/* --- MAIN BODY --- */}
-            <main className="flex-1 w-full py-6 md:py-10 lg:py-12 flex flex-col">
+            <main className="flex-1 w-full flex flex-col">
                 <Container className="flex-1 flex flex-col">
-                {children}
+                    {children}
                 </Container>
             </main>
 

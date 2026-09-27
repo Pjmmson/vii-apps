@@ -8,7 +8,6 @@ import ViiAccountLists from "./viiAccountLists";
 
 const AccountMain = () => {
     const [ viiAccounts, setViiAccounts ] = useState([]);
-    const [ accName, setAccName ] = useState("");
     const [ error, setError ] = useState("");
 
     useEffect(() => {
