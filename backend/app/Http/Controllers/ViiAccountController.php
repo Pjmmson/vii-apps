@@ -2,88 +2,68 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\ViiAccount;
+use App\Http\Requests\StoreAccountRequest;
+use App\Http\Requests\UpdateAccountRequest;
+use App\Http\Resources\AccountResource;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
-class ViiAccountController extends Controller
+class AccountController extends Controller
 {
     /**
-     * GET (Read all)
+     * READ (List all accounts)
+     * GET /api/accounts
      */
-    public function index()
+    public function index(): AnonymousResourceCollection
     {
-        try {
-            $accounts = ViiAccount::all();
-
-            // If database is empty, fall back to temporary mock array
-            $data = $accounts->isNotEmpty() ? $accounts : [
-                [
-                    'id'         => 1,
-                    'name'       => 'Mock Account 1',
-                    'email'      => 'mock1@vii.com',
-                    'created_at' => now()->toDateTimeString(),
-                ],
-                [
-                    'id'         => 2,
-                    'name'       => 'Mock Account 2',
-                    'email'      => 'mock2@vii.com',
-                    'created_at' => now()->toDateTimeString(),
-                ]
-            ];
-
-            return response()->json([
-                'status'  => 'success',
-                'message' => 'ViiAccount endpoint is working successfully!',
-                'count'   => count($data),
-                'data'    => $data,
-            ], 200);
-        } catch (\Exception $e) {
-            return response()->json([
-                'status'  => 'error',
-                'message' => 'ViiAccount endpoint failed: ' . $e->getMessage(),
-            ], 500);
-        }
+        $accounts = ViiAccount::latest()->paginate(10);
+        return AccountResource::collection($accounts);
     }
 
     /**
-     * POST (Create)
+     * CREATE (Store new account)
+     * POST /api/accounts
      */
-    public function store(Request $request)
+    public function store(StoreAccountRequest $request): JsonResponse
     {
-        $validated = $request->validate([
-            "vii_acc_name" => "required|string",
-        ]);
-        $vii_acc_name = ViiAccount::create($validated);
-        return response()->json($vii_acc_name, 201);
+        $account = ViiAccount::create($request->validated());
+
+        return (new AccountResource($account))
+            ->response()
+            ->setStatusCode(201);
     }
 
     /**
-     * GET (Read single).
+     * READ (Show single account)
+     * GET /api/accounts/{account}
      */
-    public function show(string $id)
+    public function show(ViiAccount $account): AccountResource
     {
-        return response()->json(ViiAccount::findOrFail($id), 200);
+        return new AccountResource($account);
     }
 
     /**
-     * PUT/PATCH (Update)
+     * UPDATE (Update existing account)
+     * PUT/PATCH /api/accounts/{account}
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateAccountRequest $request, Account $account): AccountResource
     {
-        $vii_acc_name = ViiAccount::FindOrFail($id);
-        $vii_acc_name->update($request->all());
-        return response()->json($vii_acc_name, 200);
+        $account->update($request->validated());
+
+        return new AccountResource($account);
     }
 
     /**
-     * DELETE (Delete).
+     * DELETE (Remove account)
+     * DELETE /api/accounts/{account}
      */
-    public function destroy(string $id)
+    public function destroy(ViiAccount $account): JsonResponse
     {
-        ViiAccount::destroy($id);
-        return respone()->json([
-            'message' => 'success',
-            'data' => null,
-        ], 204);
+        $account->delete();
+
+        return response()->json([
+            'message' => 'Account deleted successfully.'
+        ], 200);
     }
 }
