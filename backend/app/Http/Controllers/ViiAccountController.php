@@ -1,69 +1,33 @@
-<?php
-
 namespace App\Http\Controllers;
 
 use App\Models\ViiAccount;
-use App\Http\Requests\StoreAccountRequest;
-use App\Http\Requests\UpdateAccountRequest;
-use App\Http\Resources\AccountResource;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
-class AccountController extends Controller
+class ViiAccountAuthController extends Controller
 {
-    /**
-     * READ (List all accounts)
-     * GET /api/accounts
-     */
-    public function index(): AnonymousResourceCollection
+    public function login(Request $request)
     {
-        $accounts = ViiAccount::latest()->paginate(10);
-        return AccountResource::collection($accounts);
-    }
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|string',
+        ]);
 
-    /**
-     * CREATE (Store new account)
-     * POST /api/accounts
-     */
-    public function store(StoreAccountRequest $request): JsonResponse
-    {
-        $account = ViiAccount::create($request->validated());
+        // Query the ViiAccount model
+        $account = ViiAccount::where('email', $credentials['email'])->first();
 
-        return (new AccountResource($account))
-            ->response()
-            ->setStatusCode(201);
-    }
+        if (! $account || ! Hash::check($credentials['password'], $account->password)) {
+            return response()->json(['message' => 'Invalid credentials'], 401);
+        }
 
-    /**
-     * READ (Show single account)
-     * GET /api/accounts/{account}
-     */
-    public function show(ViiAccount $account): AccountResource
-    {
-        return new AccountResource($account);
-    }
-
-    /**
-     * UPDATE (Update existing account)
-     * PUT/PATCH /api/accounts/{account}
-     */
-    public function update(UpdateAccountRequest $request, Account $account): AccountResource
-    {
-        $account->update($request->validated());
-
-        return new AccountResource($account);
-    }
-
-    /**
-     * DELETE (Remove account)
-     * DELETE /api/accounts/{account}
-     */
-    public function destroy(ViiAccount $account): JsonResponse
-    {
-        $account->delete();
+        // Create token specifically for ViiAccount
+        $token = $account->createToken('vii_account_token')->plainTextToken;
 
         return response()->json([
-            'message' => 'Account deleted successfully.'
-        ], 200);
+            'status' => 'success',
+            'access_token' => $token,
+            'token_type' => 'Bearer',
+            'account' => $account,
+        ]);
     }
 }

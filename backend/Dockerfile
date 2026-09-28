@@ -21,6 +21,12 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www
 
+# Clear cache
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Install PHP extensions required by Laravel
+RUN docker-php-ext-install pdo pdo_mysql mbstring exif pcntl bcmath gd
+
 # Copy existing application directory permissions
 COPY . /var/www
 RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache

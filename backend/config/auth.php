@@ -64,13 +64,14 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', User::class),
+            'model' => App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        // Custom provider for ViiAccount
+        'accounts' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\ViiAccount::class,
+        ],
     ],
 
     /*
