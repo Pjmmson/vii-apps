@@ -6,9 +6,9 @@ import ViiAccountCaller from "./viiAccountCaller";;
 import { useAccountForm } from "../../hooks/useAccountForm";
 
 const AccountMain = () => {
-    const { accountData, isLoading, handleChange, error, header, handleSignIn, handleCreate, handleClicks } = useAccountForm();
+    const { accountData, isLoading, handleChange, error, header, handleClicks } = useAccountForm();
 
-    const viiAccount = <ViiAccountCaller title={header.title} accLists={accountData} handleClicks={handleClicks}/>
+    const viiAccount = <ViiAccountCaller title={header.title} accountData={accountData} handleClicks={handleClicks} handleChange={handleChange}/>
     return (
         <BaseLayout headerMenu={HEADER_MENUS} footers={FOOTER_MENUS} viilogo={viilogo} children={viiAccount}/>
     );
